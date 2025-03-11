@@ -1,7 +1,10 @@
+import java.awt.print.PrinterIOException;
 import java.io.*;
+import java.util.Scanner;
 
 public class SortArray {
     int [] array;
+
     ISortingAlgorithms sortingAlgorithms;
     boolean steps;
 
@@ -16,7 +19,6 @@ public class SortArray {
         System.out.println("]");
     }
     SortArray(File file, ISortingAlgorithms sortingAlgorithms, boolean steps) throws IOException {
-
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line = bufferedReader.readLine();
@@ -47,14 +49,29 @@ public class SortArray {
 
 
 
-    public static void main(String[] args) {
-        // read file
+    public static void main(String[] args) throws IOException, PrinterIOException {
+        System.out.print("Enter File Name : ");
+        Scanner in= new Scanner(System.in);
+        String fileName = in.nextLine();
+        File file= new File(fileName+".txt");
+        System.out.print("Enter 1 to print steps otherwise 0: ");
+        int inSteps= in.nextInt();
+        boolean steps= inSteps == 1;
+        System.out.println("Choose type of Algorithm : ");
+        System.out.println("1.Bubble Sort            2.Merge Sort          3.Counting Sort");
+        int type= in.nextInt();
+        String algoType=(type==1)?("bubble"):
+                (type==2)?("merge") : ("counting");
+         SortFactory sortFactory=new SortFactory();
+         ISortingAlgorithms algorithm=sortFactory.sortingAlgorithms(algoType);
 
-        // bool
+         try {
+             SortArray sortArray=new SortArray(file,algorithm,steps);
+             sortArray.sort();
+         } catch (IOException e) {
+             System.out.println("FILE NOT FOUND !!");}
+        }
 
-        // 3 types of algo
-
-        //.sort
 
     }
 
