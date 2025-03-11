@@ -8,17 +8,9 @@ public class SortArray {
     ISortingAlgorithms sortingAlgorithms;
     boolean steps;
 
-    public void print(int [] sorted,int n) {
-        System.out.print("[");
-        for (int i = 0; i < n; i++) {
-            if(i!=n-1)
-                System.out.print(sorted[i]+", ");
-            else
-                System.out.print(sorted[i]);
-        }
-        System.out.println("]");
-    }
     SortArray(File file, ISortingAlgorithms sortingAlgorithms, boolean steps) throws IOException {
+        this.sortingAlgorithms = sortingAlgorithms;
+        this.steps = steps;
         FileReader fileReader = new FileReader(file);
         BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line = bufferedReader.readLine();
@@ -39,7 +31,7 @@ public class SortArray {
     public void sort(){
         if(sortingAlgorithms == null) return;
         int [] sorted = sortingAlgorithms.sort(array,steps);
-        if(!steps) print(sorted,sorted.length);
+        if(!steps) Helper.print(sorted,sorted.length);
     }
     public int [] test(){
         if(sortingAlgorithms == null) return null;
@@ -63,6 +55,7 @@ public class SortArray {
         String algoType=(type==1)?("bubble"):
                 (type==2)?("merge") : ("counting");
          SortFactory sortFactory=new SortFactory();
+
          ISortingAlgorithms algorithm=sortFactory.sortingAlgorithms(algoType);
 
          try {
@@ -75,5 +68,3 @@ public class SortArray {
 
     }
 
-
-}

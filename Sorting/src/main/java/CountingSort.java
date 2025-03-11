@@ -1,17 +1,6 @@
 import java.util.Arrays;
 
 public class CountingSort implements ISortingAlgorithms{
-
-    public void print(int [] sorted,int n) {
-        System.out.print("[");
-        for (int i = 0; i < n; i++) {
-            if(i!=n-1)
-                System.out.print(sorted[i]+", ");
-            else
-                System.out.print(sorted[i]);
-        }
-        System.out.println("]");
-    }
     @Override
     public int[] sort(int[] array, boolean steps) {
         int min = Arrays.stream(array).min().getAsInt();
@@ -28,7 +17,7 @@ public class CountingSort implements ISortingAlgorithms{
         }
         if(steps){
             System.out.print("Frequency Array: ");
-            print(count,count.length);
+            Helper.print(count,count.length);
         }
         int pointer = 0;
         for(int i=0;i<range;i++){
@@ -37,7 +26,7 @@ public class CountingSort implements ISortingAlgorithms{
                 sorted[pointer] = i+min;
                 pointer++;
             }
-            if(steps && repeated!=0) print(sorted,pointer);
+            if(steps && repeated!=0) Helper.print(sorted,pointer);
         }
         return sorted;
     }

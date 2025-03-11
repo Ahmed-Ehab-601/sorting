@@ -18,23 +18,13 @@ public class BubbleSort implements ISortingAlgorithms{
                      swapped=true;
                 }
             }if(steps) {
-           print(sorted);}
+           Helper.print(sorted,sorted.length);}
             if(swapped==false) break;
         }
         return sorted;
 
     }
-    public void print(int [] sorted) {
-        System.out.print("[");
-        int n = sorted.length;
-        for (int i = 0; i < n; i++) {
-            if(i!=n-1)
-                System.out.print(sorted[i]+", ");
-            else
-                System.out.print(sorted[i]);
-        }
-        System.out.println("]");
-    }
+
 
     public static void main(String[] args) {
         int[] arr = {6, 4, 8, 7, 0, 1, 9, 25};
@@ -42,5 +32,6 @@ public class BubbleSort implements ISortingAlgorithms{
         int[] sortedArr = bubbleSort.sort(arr, true);
 
         System.out.print("Final Sorted Array: ");
-        bubbleSort.print(sortedArr);}
+        Helper.print(sortedArr,sortedArr.length);
+    }
 }
