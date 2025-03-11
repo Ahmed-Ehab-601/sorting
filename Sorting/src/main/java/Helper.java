@@ -28,13 +28,13 @@ public class Helper {
          long nanoTime = (endTime - startTime);
          double microTime =( (double) (endTime- startTime) )/10E3;
          double milliTime = ( (double) (endTime- startTime) )/10E6;
-         testResult.time = (nanoTime + " ns "+ microTime + " micro "+milliTime+" ms");
+         testResult.time = ("{"+nanoTime + " ns, "+ microTime + " micro, "+milliTime+" ms}");
           return testResult;
      }
 
 
     public static void main(String[] args) {
-        int [] a = Helper.getRandomArray(0,6,5);
+        int [] a = Helper.getRandomArray(2,6,100);
         for(int i : a){
             System.out.print(i+ " ");
         }

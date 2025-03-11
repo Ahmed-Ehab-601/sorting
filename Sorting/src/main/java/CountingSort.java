@@ -32,7 +32,7 @@ public class CountingSort implements ISortingAlgorithms{
     }
 
     public static void main(String[] args) {
-        int[] a = {1,5,7,7,8,4,6,10,5};
+        int[] a = {0,5,7,7,8,4,6,10,50000};
         CountingSort countingSort = new CountingSort();
         int [] b = countingSort.sort(a,true);
     }
