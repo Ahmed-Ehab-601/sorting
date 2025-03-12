@@ -36,7 +36,7 @@ class NonComparingSortTest {
     void veryLargeSizeSort(){
         int [] array = Helper.getRandomArray(1,100000,1000000);
         TestResult testResult = Helper.showTime(array,sortingAlgorithm);
-        System.out.println("Very Large Size Sort (500K) : "+testResult.time);
+        System.out.println("Very Large Size Sort (1M) : "+testResult.time);
         Arrays.sort(array);
         assertArrayEquals(array,testResult.sorted);
     }
@@ -65,7 +65,7 @@ class NonComparingSortTest {
             array[i] = i;
         }
         TestResult testResult = Helper.showTime(array,sortingAlgorithm);
-        System.out.println("reversed (50k): "+testResult.time);
+        System.out.println("reversed (100k): "+testResult.time);
         Arrays.sort(array);
         assertArrayEquals(array,testResult.sorted);
     }
