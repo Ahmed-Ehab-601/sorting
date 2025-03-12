@@ -13,7 +13,8 @@ public class MergeSort implements ISortingAlgorithms{
         int len=array.length;
         this.temp= new int[len];
         this.copyArray=array.clone();
-        mySort(0,len-1);
+        int level=0;
+        mySort(0,len-1,level);
         return this.copyArray ;
     }
     private void merge(int l, int r,int mid){
@@ -31,37 +32,42 @@ public class MergeSort implements ISortingAlgorithms{
         }
 
     }
-     private void mySort(int l ,int r){
+     private void mySort(int l ,int r,int level){
 
         if(r<=l) return;
-        int mid=(l+r)/2;
-        if (steps) print(l,mid);
-        mySort(l,mid);
-         if (steps) print(mid+1,r);
-        mySort(mid+1,r);
 
+        int mid=(l+r)/2;
+        if (steps) printStep( l, r, mid, level);
+        mySort(l,mid,level+1);
+        mySort(mid+1,r,level+1);
         if(copyArray[mid]<this.copyArray[mid+1]) return;
         merge(l,r,mid);
-
+        if(steps) printMerge(l,r,level);
 
      }
-    private void print(int l,int r){
-//        System.out.print("[ ");
-//        for(int i=l;i<=mid;i++){
-//            System.out.print(copyArray[i]+" ");
-//            if(i!=mid) System.out.print(",");
-//        }
-//        System.out.print("]");
-//        System.out.print("<===========================>");
-    System.out.print("[ ");
-        for(int i=l;i<=r;i++){
-            System.out.print(copyArray[i]+" ");
-            if(i!=r) System.out.print(",");
-        }
-        System.out.print("]");
-        System.out.println();
-
+    private void printStep(int l, int r, int m, int level) {
+        String indent = "  ".repeat(level);
+        System.out.println(indent + "Level "+level+" :" + arrayToString(l, m) + " and " + arrayToString(m + 1, r));
     }
+
+    private void printMerge(int l, int r, int level) {
+        String indent = "  ".repeat(level);
+        System.out.println(indent + "merged level "+level+" :"+ arrayToString(l, r));
+    }
+    private String arrayToString(int l, int r) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = l; i <= r; i++) {
+            sb.append(copyArray[i]);
+            if (i < r) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]");
+        return sb.toString();
+    }
+
+
 
      public static void main(String[] args) {
         int []a={2,3,6,7,8,1,5};
@@ -77,3 +83,5 @@ public class MergeSort implements ISortingAlgorithms{
     }
 
 }
+
+
