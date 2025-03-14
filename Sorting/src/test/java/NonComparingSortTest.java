@@ -61,8 +61,8 @@ class NonComparingSortTest {
     @Test
     void reversedArraySort(){
         int [] array = new int[100000];
-        for(int i = 100000-1;i >= 0; i--){
-            array[i] = i;
+        for(int j = 100000,i=0;i < 100000; i++,j--){
+            array[i] = j;
         }
         TestResult testResult = Helper.showTime(array,sortingAlgorithm);
         System.out.println("reversed (100k): "+testResult.time);

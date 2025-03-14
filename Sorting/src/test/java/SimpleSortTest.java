@@ -61,8 +61,8 @@ public class SimpleSortTest {
     @Test
     void reversedArraySort(){
         int [] array = new int[10000];
-        for(int i = 10000-1;i >= 0; i--){
-            array[i] = i;
+        for(int j = 10000,i=0;i < 10000; i++,j--){
+            array[i] = j;
         }
         TestResult testResult = Helper.showTime(array,sortingAlgorithm);
         System.out.println("reversed (10k): "+testResult.time);

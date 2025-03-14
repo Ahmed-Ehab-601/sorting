@@ -62,8 +62,8 @@ public class EfficientSortTest {
     @Test
     void reversedArraySort(){
         int [] array = new int[500000];
-        for(int i = 500000-1;i >= 0; i--){
-            array[i] = i;
+        for(int j = 500000,i=0;i < 500000; i++,j--){
+            array[i] = j;
         }
         TestResult testResult = Helper.showTime(array,sortingAlgorithm);
         System.out.println("reversed (500k): "+testResult.time);
